@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap');
 
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
 * {
   font-family: 'Press Start 2P', cursive;
   font-family: 'Roboto Flex', sans-serif;
@@ -45,6 +56,7 @@ body {
   h2 {
     font-size: 1.5em;
     font-weight: 400;
+    text-transform: uppercase;
   }
 
   .background {
@@ -55,9 +67,9 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url("../img/reproduction.png");
+    background-image: linear-gradient(var(--rotate), rgba(93, 220, 255, 0.9), rgba(60, 103, 227, 0.26) 43%, rgba(78, 0, 194, 0.87)
+    ), url("../img/reproduction.png");
     background-size: cover;
-    background-position: center;
 
     filter: blur(8px);
     z-index: -1;
@@ -66,18 +78,18 @@ body {
 
 }
 
-.floating_links {
+.floating__links {
 
   position: fixed;
-  bottom: 1em;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 1280px;
   margin: auto;
+  z-index: 1000;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
 
   padding: 1em;
@@ -87,7 +99,7 @@ body {
     color: #ffffff;
     text-decoration: none;
     border-radius: 2em;
-    background-color: rgba(0, 11, 21, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     border: 1px solid transparent;
     transition: all 0.2s ease-in-out;
@@ -102,10 +114,95 @@ body {
   }
 
   a:hover {
-    background-color: #00182c;
+    background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid #ffffff;
   }
 }
+
+main {
+  width: 100%;
+  max-width: 1280px;
+  margin: 4em auto;
+  padding: 1em;
+}
+
+.special {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background: linear-gradient(var(--rotate), rgba(93, 220, 255, 0.8), rgba(60, 103, 227, 0.8) 43%, rgba(78, 0, 194, 0.8)
+  ), url("../img/reproduction.png");
+  background-size: cover;
+
+  border-radius: 1em;
+  padding: 2em;
+  filter: brightness(1.0);
+  transition: all 0.2s ease-in-out;
+
+  h2 {
+    font-size: 2em;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 1em;
+  }
+
+  &:hover {
+    transform: scale(1.05) rotate(-1deg);
+    filter: brightness(1);
+  }
+}
+
+.button__row {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-top: 2em;
+
+  a.button {
+    padding: 0.5em 1em;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 2em;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 1px solid #ffffff;
+    }
+  }
+
+  a.button:first-child {
+    border: none;
+    border-radius: 1em 0 0 1em;
+    background: linear-gradient(45deg, rgba(204, 8, 144, 0.8), rgba(175, 22, 88, 0.88) 43%, rgba(78, 0, 194, 0.8));
+    filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1.0);
+
+    &:hover {
+      filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1.5);
+    }
+
+  }
+
+  a.button:last-child {
+    border-radius: 0 1em 1em 0;
+  }
+
+}
+
 
 // Media Queries
 @media (max-width: 768px) {
@@ -120,9 +217,6 @@ body {
     .background {
       background-position: 50%
     }
-
-
   }
-
 }
 
