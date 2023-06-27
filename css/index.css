@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap");
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
 :root {
   --card-height: 65vh;
   --card-width: calc(var(--card-height) / 1.5);
@@ -151,27 +146,36 @@ main {
   padding: 0.5em 1em;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 2em;
+  border-radius: 1em;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
 }
+.button__row a.button svg {
+  margin-right: 0.5em;
+}
 .button__row a.button:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #ffffff;
 }
-.button__row a.button:first-child {
+.button__row:not(.no__highlight) a.button:first-child {
   border: none;
-  border-radius: 1em 0 0 1em;
   background: linear-gradient(45deg, rgba(204, 8, 144, 0.8), rgba(175, 22, 88, 0.88) 43%, rgba(78, 0, 194, 0.8));
-  filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1);
+  filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1) contrast(1.2);
+  transition: all 0.2s ease-in-out;
 }
-.button__row a.button:first-child:hover {
-  filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1.5);
+.button__row:not(.no__highlight) a.button:first-child:hover {
+  filter: drop-shadow(0 0 0.75em rgba(93, 220, 255, 0.8)) brightness(1) contrast(1.2) saturate(1.2);
+}
+.button__row a.button:first-child {
+  border-radius: 1em 0 0 1em;
 }
 .button__row a.button:last-child {
   border-radius: 0 1em 1em 0;
+}
+.button__row a.button:last-child:first-child {
+  border-radius: 1em;
 }
 
 @media (max-width: 768px) {
