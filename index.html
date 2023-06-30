@@ -23,23 +23,28 @@
   <meta name="twitter:description" content="A fast and versatile tank that will allow you to dominate the battlefield!">
   <meta name="twitter:image" content="img/reproduction.png">
 
+  <meta name="theme-color" content="#fafafa">
+
+  <script src="js/main.js" type="module"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+  />
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="img/icon.png">
   <link rel="icon" href="img/icon.png">
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/index.css">
 
-  <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
 
 <div class="floating__links">
   <div class="button__row">
-    <a class="button" href="https://github.com/beauthebeau/leopards.wtf" target="_blank">
+    <a class="button" href="https://www.roblox.com/game-pass/177694027/Leopard-Evo-Tank" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
         <path
           d="M7.53 1.282a.5.5 0 0 1 .94 0l.478 1.306a7.492 7.492 0 0 0 4.464 4.464l1.305.478a.5.5 0 0 1 0 .94l-1.305.478a7.492 7.492 0 0 0-4.464 4.464l-.478 1.305a.5.5 0 0 1-.94 0l-.478-1.305a7.492 7.492 0 0 0-4.464-4.464L1.282 8.47a.5.5 0 0 1 0-.94l1.306-.478a7.492 7.492 0 0 0 4.464-4.464Z"></path>
@@ -80,8 +85,37 @@
       revolutionize the way we perceive armored warfare. With its self-replicating technology and state-of-the-art
       features, the Leopard Evo ensures your dominance on any terrain.</p>
 
-    <img class="display__img" src="img/mbt.png" alt="Leopard Evo on a blue background">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img class="display__img" src="img/mbt.png" alt="Leopard Evo on a blue background">
+        </div>
+        <div class="swiper-slide">
+          <img class="display__img" src="img/tank_alone.webp" alt="Leopard Evo on a blue background">
+        </div>
+        <div class="swiper-slide">
+          <img class="display__img" src="img/tank_car.webp" alt="Leopard Evo on a blue background">
+        </div>
+        <div class="swiper-slide">
+          <img class="display__img" src="img/tank_rock.webp" alt="Leopard Evo on a blue background">
+        </div>
+        <div class="swiper-slide">
+          <img class="display__img" src="img/tank_statue.webp" alt="Leopard Evo on a blue background">
+        </div>
+      </div>
 
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+
+    </div>
+    we know
     <h2>Unmatched Performance and Versatility</h2>
     <p>Engineered for speed, agility, and superior performance, the Leopard Evo is a formidable force on the
       battlefield.
