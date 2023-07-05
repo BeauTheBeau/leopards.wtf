@@ -154,6 +154,7 @@ main {
 }
 .special.mini {
   background: linear-gradient(var(--rotate), rgb(93, 220, 255), rgb(60, 103, 227) 43%, rgb(78, 0, 194));
+  box-shadow: none !important;
 }
 .special.mini h3 {
   font-size: 1.5em;
@@ -182,7 +183,7 @@ main {
   filter: brightness(1);
 }
 
-.special:before {
+.special:not(.mini)::after {
   content: "";
   z-index: -1;
   position: absolute;
@@ -198,7 +199,7 @@ main {
   border-radius: inherit;
 }
 
-.special::after {
+.special:not(.mini):hover::after {
   content: "";
   z-index: -1;
   position: absolute;
