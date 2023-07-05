@@ -2,7 +2,7 @@
   "short_name": "leopard",
   "name": "leopards.wtf",
   "icons": [{
-    "src": "icon.png",
+    "src": "icon.webp",
     "type": "image/png",
     "sizes": "192x192"
   }],

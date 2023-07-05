@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap');
 
+
+@keyframes rotate {
+  from {
+    --rotate: 132deg;
+  }
+  to {
+    --rotate: 228deg;
+  }
+}
+
 @property --rotate {
   syntax: "<angle>";
   initial-value: 132deg;
   inherits: false;
+  animation: rotate 10s linear infinite;
 }
 
 :root {
@@ -68,7 +79,7 @@ body {
     height: 100%;
 
     background-image: linear-gradient(var(--rotate), rgba(93, 220, 255, 0.9), rgba(60, 103, 227, 0.26) 43%, rgba(78, 0, 194, 0.87)
-    ), url("../img/reproduction.png");
+    ), url("../img/reproduction.webp");
     background-size: cover;
 
     filter: blur(8px);
@@ -86,13 +97,15 @@ body {
 .floating__links {
 
   position: fixed;
-  top: 1em;
-  left: 50%;
-  transform: translateX(-50%);
+
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  max-width: 100%;
   width: 100%;
-  max-width: calc(1280px - 2em);
-  margin: auto;
-  border-radius: 1em;
+  transform: translateX(0);
+
   z-index: 1000;
 
   background-color: rgba(0, 0, 0, 0.54);
@@ -102,6 +115,15 @@ body {
   justify-content: space-between;
 
   padding: 1em;
+  transition: all 0.2s ease-in-out;
+
+  &.floating {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1em;
+    max-width: calc(1280px - 2em);
+    border-radius: 1em;
+  }
 
   div {
     display: flex;
@@ -153,15 +175,38 @@ main {
   flex-wrap: wrap;
 
   background: linear-gradient(var(--rotate), rgba(93, 220, 255, 0.8), rgba(60, 103, 227, 0.8) 43%, rgba(78, 0, 194, 0.8)
-  ), url("../img/reproduction.png");
-  background-size: cover;
+  ), url("../img/reproduction.webp");
+  background-size: 100%;
+  background-position: center;
 
   border-radius: 1em;
   padding: 2em;
+  margin-bottom: 2em;
+
   filter: brightness(1.0);
   transition: all 0.2s ease-in-out;
 
-  h2 {
+  &.mini {
+    background: linear-gradient(var(--rotate), rgba(93, 220, 255, 1), rgba(60, 103, 227, 1) 43%, rgba(78, 0, 194, 1));
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+
+    &:hover {
+      background-size: 110%;
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+      filter: brightness(1);
+    }
+
+
+  }
+
+  h2, h3 {
     font-size: 2em;
     font-weight: 900;
     text-transform: uppercase;
@@ -174,10 +219,41 @@ main {
   }
 
   &:hover {
-    transform: scale(1.05) rotate(-1deg);
+    background-size: 110%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
     filter: brightness(1);
   }
 }
+
+
+.special:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(56deg, rgba(93, 220, 255, 0.8), rgba(60, 103, 227, 0.8) 43%, rgba(78, 0, 194, 0.8));
+  transform: translate3d(0px, 20px, 0) scale(1);
+  filter: blur(20px);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  border-radius: inherit;
+}
+
+.special::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+
 
 .button__row {
 
@@ -188,25 +264,6 @@ main {
 
   margin-top: 2em;
 
-  a.button {
-    padding: 0.5em 1em;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 1em;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(8px);
-    border: 1px solid transparent;
-    transition: all 0.2s ease-in-out;
-
-    svg {
-      margin-right: 0.5em;
-    }
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-      border: 1px solid #ffffff;
-    }
-  }
 
   &:not(.no__highlight) {
 
@@ -235,6 +292,27 @@ main {
 
 }
 
+.button {
+  padding: 0.5em 1em;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+
+  svg {
+    margin-right: 0.5em;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ffffff;
+  }
+}
+
+
 .swiper {
   width: 100%;
   aspect-ratio: 16/9;
@@ -252,10 +330,116 @@ main {
   color: #ffffff;
 }
 
+
+.payment__dialog {
+
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  opacity: 0;
+
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  z-index: 9999;
+
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  transition: all 0.2s ease-in-out;
+
+
+  &[open] {
+    opacity: 1;
+    scale: 1;
+  }
+
+  &:not([open]) {
+    scale: 0.9;
+  }
+
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  backdrop-filter: blur(8px);
+  border-radius: 1em;
+
+  transition: all 0.2s ease-in-out;
+
+
+  .payment__dialog-header {
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    margin-right: 1em;
+    width: 100%;
+  }
+
+
+  .prices {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    .price {
+      font-size: 1.5em;
+      font-weight: 900;
+    }
+
+    .currency {
+      font-size: 1em;
+      font-weight: 400;
+    }
+
+    .period {
+      font-size: 1em;
+      font-weight: 400;
+    }
+  }
+}
+
+
+.wrapper {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.effect-wrapper {
+  text-align: center;
+  font-weight: normal;
+}
+
+#typed {
+  font-weight: bold;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blinker 1000ms infinite;
+}
+
+.cursor.typing-true {
+  animation: none;
+}
+
+@keyframes blinker {
+  25% {
+    background-color: #ffffff;
+  }
+  75% {
+    background-color: transparent;
+  }
+}
+
+
 // Media Queries
 @media (max-width: 768px) {
   .hero {
-
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
@@ -265,6 +449,23 @@ main {
       background-position: 50%
     }
   }
+
+  .floating__links.floating {
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .payment__dialog-header {
+    border-right: 0;
+    margin-right: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .payment__dialog {
+    flex-direction: column;
+  }
+
 }
 
 
