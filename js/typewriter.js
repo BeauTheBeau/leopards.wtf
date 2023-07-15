@@ -18,7 +18,16 @@ export default function typewriter(toType, targetElement, speed) {
   function type() {
     const currentText = toType[index];
 
-    if (isDeleting) text = currentText.substring(0, text.length - 1);
+    if (isDeleting) {
+      targetElement.style.backgroundColor = "black";
+      targetElement.style.color = "white";
+      setTimeout(() => {
+        text = "";
+        targetElement.style.backgroundColor = "transparent";
+        targetElement.style.color = "white";
+      }, 500);
+    }
+
     else text = currentText.substring(0, text.length + 1);
 
     targetElement.innerHTML = text;

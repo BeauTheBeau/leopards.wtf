@@ -41,8 +41,7 @@ new Swiper('.swiper', {
 window.addEventListener('scroll', () => {
   const heroHeight = document.getElementsByClassName("hero")[0].offsetHeight;
   const opacity = (Math.min(window.scrollY / heroHeight, 1) * 2).toFixed(2);
-  const blur = 20 - (Math.min(window.scrollY / heroHeight, 1) * 10).toFixed(2);
-  console.log(opacity, blur);
+  const blur = 10 - (Math.min(window.scrollY / heroHeight, 1) * 10).toFixed(2) * 2;
 
   const heroForeground = document.getElementById("hero__foreground");
   heroForeground.style.opacity = opacity;
@@ -50,13 +49,11 @@ window.addEventListener('scroll', () => {
   heroForeground.style.y = `${window.scrollY / 2}px`;
 });
 
-
-
 import('./typewriter.js').then(({default: typewriter}) => {
   typewriter(
     [
       "Revolutionize tank production with self-replicating technology.",
-      "Leopard Evo: Dominating the Battlefield, Redefining Armored Warfare.",
+      "Dominating the Battlefield, Redefining Armored Warfare.",
       "Unleash Your Inner Warrior: Experience Evo's Unmatched Performance.",
       "Swift Agility, Unmatched Power: Conquer with Evo.",
       "Unleash Devastating Force: Your Key to Battlefield Supremacy.",
@@ -69,8 +66,90 @@ import('./typewriter.js').then(({default: typewriter}) => {
     document.getElementById("typewriter"),
     50
   );
-
 });
+
+
+/**
+ * @name: Copy to Clipboard
+ * @description: When the user clicks on a section's text, the text will be copied to the clipboard.
+ *              The text will be formatted as a Discord message, with a link to the page and a mention.
+ *              The text will be formatted as a quote block, with a vertical bar (>) at the beginning of each line.
+ *              The text will be formatted as a code block, with three backticks (```) at the beginning and end of the text.
+ * @type {Element}
+ *
+ */
+
+const sectionText = document.getElementsByClassName("section__text");
+for (let i = 0; i < sectionText.length; i++) {
+
+  // set title to "Click to Copy"
+  sectionText[i].title = "Click to Copy";
+
+  sectionText[i].addEventListener('click', () => {
+    const text = sectionText[i].innerText;
+    const textToCopy = `Via https://leopards.wtf${window.location.pathname}, from <@729567972070391848>\n\n`
+      + "> ```"  + `${text}`  + "```";
+
+    try {
+      navigator.share({
+        title: 'Leopards.wtf snippet',
+        text: textToCopy,
+        url: `https://leopards.wtf${window.location.pathname}`,
+      }).then(() => {
+        console.log('Successful share');
+      }).catch((error) => {
+        console.log('Error sharing', error);
+      });
+    } catch (e) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+      }, (err) => {
+        console.error('Async: Could not copy text: ', err);
+      });
+    }
+
+  });
+}
+
+/**
+ * @name: Graph to Image
+ * @description: When the user clicks on a graph, the graph will be copied to the clipboard as an image.
+ * @type {Element}
+ */
+
+// function saveElementAsImage(element) {
+//   const canvas = document.createElement('canvas');
+//   const context = canvas.getContext('2d');
+//
+//   // Set canvas dimensions to match the element
+//   canvas.width = element.offsetWidth;
+//   canvas.height = element.offsetHeight;
+//
+//   // Render the element and its children onto the canvas
+//   context.drawImage(element, 0, 0);
+//
+//   // Convert the canvas content to a data URL
+//   const dataURL = canvas.toDataURL();
+//
+//   // Create a temporary link element
+//   const link = document.createElement('a');
+//   link.href = dataURL;
+//   link.download = 'element.png'; // Set the desired file name
+//
+//   // Simulate a click on the link to trigger the download
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+// }
+//
+//
+// const graphs = document.getElementsByClassName("comparison__bar__chart");
+// for (let i = 0; i < graphs.length; i++) {
+//   graphs[i].title = "Click to Copy";
+//   graphs[i].addEventListener('click', () => {
+//     saveElementAsImage(graphs[i]);
+//   });
+// }
+
 
 
 

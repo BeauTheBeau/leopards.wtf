@@ -5,10 +5,20 @@
   --secondary-color: 0, 0, 0;
   --tertiary-color: 255, 255, 255;
 
-  --gradient-start: 2255, 0, 0;
+  --gradient-start: 255, 0, 0;
   --gradient-end: 55, 165, 0;
 }
 
+.did__you__know {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0.25em;
+  margin: 0.25em;
+  border-radius: 0.5em;
+  background-color: rgba(var(--primary-color), 0.5);
+  z-index: 100;
+}
 
 * {
   box-sizing: border-box;
@@ -31,8 +41,8 @@ body {
   font-family: 'Roboto Flex', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  margin: 0;
-  padding: 0;
+
+  padding-bottom: 2em;
   background-color: rgb(var(--background-color));
   color: rgb(var(--tertiary-color));
 }
@@ -258,7 +268,12 @@ main section {
   border-radius: 1em;
   padding: 1em;
   margin: 1em 0;
-  border: 1px solid rgba(var(--tertiary-color), 0.25);
+  //border: 1px solid rgba(var(--tertiary-color), 0.25);
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+  }
 
   .header {
 
@@ -287,6 +302,25 @@ main section {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 1em;
+    border-radius: 0 1em 1em 0;
+    border-left: 4px solid rgba(var(--tertiary-color), 0.25);
+    padding: 0.5em;
+    cursor: copy;
+    transition: all 0.1s;
+
+    &:hover {
+      background-color: rgba(var(--tertiary-color), 0.025);
+      border-left: 4px solid rgba(var(--tertiary-color), 0.5);
+      scale: 1.01;
+    }
+
+    &:active {
+      border-left: 2px solid rgba(var(--tertiary-color), 0);
+      background-color: rgba(var(--tertiary-color), 0.05);
+      scale: 0.99;
+      border-radius: 1em;
+      user-select: none;
+    }
 
     .bold__text {
       font-weight: 700;
@@ -306,14 +340,14 @@ main section {
   gap: 1em;
   border-radius: 0.5em;
   padding: 1em;
-  border: 1px solid rgba(var(--tertiary-color), 0.25);
+  //border: 1px solid rgba(var(--tertiary-color), 0.25);
   margin-top: 1em;
 
   transition: all 0.25s ease-in-out;
 
   &:hover, &:focus-within {
     background-color: rgba(var(--tertiary-color), 0.05);
-    border: 1px solid rgba(var(--tertiary-color), 0.5);
+    //border: 1px solid rgba(var(--tertiary-color), 0.5);
   }
 }
 
@@ -402,8 +436,6 @@ main section {
     overflow: hidden;
 
     border-radius: 1em;
-    padding: 1em;
-    border: 1px solid rgba(var(--tertiary-color), 0.25);
     background-color: rgba(var(--tertiary-color), 0.05);
 
     img {
@@ -417,20 +449,114 @@ main section {
   }
 }
 
+footer {
+
+  background-color: rgba(var(--tertiary-color), 0.05);
+  border-radius: 2em;
+  margin: 2em;
+  padding: 2em;
+
+  display: grid;
+  grid-template-areas:
+    "logo empty empty"
+    "text links social";
+  gap: 1em;
+  //justify-content: start;
+
+
+  .footer__text {
+    grid-area: text;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: rgba(var(--tertiary-color), 0.75);
+    font-style: italic;
+  }
+
+  .footer__subsection {
+    display: flex;
+    min-width: 20%;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgba(var(--tertiary-color), 0.025);
+    padding: 1em;
+    border-radius: 1em;
+
+  }
+
+  .logo {
+    grid-area: logo;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 10em;
+      object-fit: cover;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .footer__social {
+    grid-area: social;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100%;
+
+    .footer__social__link {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+      color: rgba(var(--tertiary-color), 1);
+      text-decoration: none;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        color: rgba(var(--tertiary-color), 0.75);
+      }
+    }
+  }
+
+  .footer__link {
+    font-weight: 700;
+    color: rgba(var(--tertiary-color), 1);
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      color: rgba(var(--gradient-end), 1);
+    }
+  }
+
+  .footer__links {
+    grid-area: links;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100%;
+  }
+
+}
 
 // Bento Grids
 #bg_images {
   display: grid;
   grid-template-areas:
-    "tankcar tankcar justtank"
-    "rock mbt mbt"
+    "justtank  tankcar   tankcar  "
+    "justtank  rock      mbt      "
+    "justtank  rock      mbt      "
     "reproduce reproduce reproduce";
 
-  gap: 1em;
-  border-radius: 0.5em;
+  gap: 0.25em;
+  border-radius: 2em;
+  overflow: hidden;
 
   .bento__grid--item {
-    border-radius: 1em;
+    border-radius: 0.5em;
     border: 1px solid rgba(var(--tertiary-color), 0.25);
     background-color: rgba(var(--tertiary-color), 0.05);
     padding: 0;

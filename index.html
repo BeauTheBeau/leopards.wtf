@@ -7,12 +7,16 @@
 <head>
   <meta charset="utf-8">
   <title>Leopard Evo | Military War Tycoon</title>
+
   <meta name="description"
         content="A fast and versatile tank that will allow you to dominate the battlefield! Get it now!">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="">
+
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://leopards.wtf/">
+  <meta property=" og:url
+  " content="https://leopards.wtf/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Leopard Evo | Military War Tycoon">
   <meta property="og:description"
@@ -47,6 +51,10 @@
 
 <body>
 
+<p class="did__you__know" onclick="/* destroy me */ this.remove();" tabindex="0"
+>Click on text with a left border to copy it to your clipboard and share it with your
+  friends!</p>
+
 <section id="hero" class="hero">
   <div class="content">
     <h1>LEOPARD EVO</h1>
@@ -56,7 +64,6 @@
 </section>
 
 <main>
-
   <section id="introduction" tabindex="0">
     <div class="header">
       <h2 class="section__title">Introducing the <span class="gradient__text">Leopard Evo</span></h2>
@@ -82,28 +89,46 @@
           with unwavering authority and unrivaled firepower.</p>
       </div>
 
-      <div class="subsection bento__grid" id="bg_images" tabindex="0">
-        <div class="bento__grid--item" id="bg_images--tankcar">
-          <img src="/img/tank_car.webp" alt="Tank Car" class="bento__grid--item--image">
+      <div class="subsection comparison__bar__chart" id="introduction__power" tabindex="0">
+        <div class="comparison__bar__chart-header">
+          <p class="comparison__bar__chart-title">Leopard Evo vs M1A2 Abrams: Firepower</p>
+          <p class="comparison__bar__chart-subtitle">Comparison of the Leopard Evo and the M1A2 Abrams in terms of
+            firepower.</p>
         </div>
-        <div class="bento__grid--item" id="bg_images--justtank">
-          <img src="/img/tank_alone.webp" alt="Just Tank" class="bento__grid--item--image">
-        </div>
-        <div class="bento__grid--item" id="bg_images--mbt">
-          <img src="/img/mbt.webp" alt="MBT" class="bento__grid--item--image">
-        </div>
-        <div class="bento__grid--item" id="bg_images--rock">
-          <img src="/img/tank_rock.webp" alt="Rock" class="bento__grid--item--image">
-        </div>
-        <div class="bento__grid--item" id="bg_images--reproduce">
-          <img src="/img/reproduction.webp" alt="Reproduce" class="bento__grid--item--image">
+        <div class="comparison__bar__chart-content">
+          <div class="comparison__bar__chart-labels">
+            <p class="comparison__bar__chart-label">Leopard Evo</p>
+            <p class="comparison__bar__chart-label">M1A2 Abrams</p>
+          </div>
+          <div class="comparison__bar__chart-bars">
+            <div class="comparison__bar__chart-bar" style="width: 100%"></div>
+            <div class="comparison__bar__chart-bar" style="width: 100%"></div>
+          </div>
         </div>
       </div>
 
+      <div class="subsection">
+        <div class="bento__grid" id="bg_images" tabindex="0">
+          <div class="bento__grid--item" id="bg_images--tankcar">
+            <img src="/img/tank_car.webp" alt="Tank Car" class="bento__grid--item--image">
+          </div>
+          <div class="bento__grid--item" id="bg_images--justtank">
+            <img src="/img/tank_alone.webp" alt="Just Tank" class="bento__grid--item--image">
+          </div>
+          <div class="bento__grid--item" id="bg_images--mbt">
+            <img src="/img/mbt.webp" alt="MBT" class="bento__grid--item--image">
+          </div>
+          <div class="bento__grid--item" id="bg_images--rock">
+            <img src="/img/tank_rock.webp" alt="Rock" class="bento__grid--item--image">
+          </div>
+          <div class="bento__grid--item" id="bg_images--reproduce">
+            <img src="/img/reproduction.webp" alt="Reproduce" class="bento__grid--item--image">
+          </div>
+        </div>
+      </div>
     </div>
 
   </section>
-
   <section id="engineered-for-speed">
 
     <div class="header">
@@ -127,8 +152,6 @@
           it accelerates swiftly, granting you the advantage of lightning-fast response times. Traverse vast distances
           in the blink of an eye, swiftly repositioning and outflanking your foes with ease. The Leopard Evo redefines
           the limits of speed, ensuring you always have the upper hand in fast-paced engagements.</p>
-
-
       </div>
 
       <div class="subsection comparison__bar__chart" id="introduction__chart" tabindex="0">
@@ -148,45 +171,36 @@
           </div>
         </div>
       </div>
-
-    </div>
-
-  </section>
-
-  <section id="contributors">
-    <h2 class="contributors__title">Contributors</h2>
-    <p class="contributors__description">These are the people who have contributed to this website.</p>
-
-    <div class="feature__card">
-      <img class="feature__card--image"
-           src="https://cdn.discordapp.com/avatars/729567972070391848/9cdab2cfd01e63954a43f16fd4f1e23d.webp?size=1024"
-           alt="Close-up of a tabby cat laying down in a garden. The cat closed its eyes."
-      >
-
-      <h3 class="feature__card--title">beauthebeau.js</h3>
-
-      <section class="feature__card--info">
-        <div class="feature__card--roles">
-          <p class="feature__card--row-title">Roles</p>
-          <p class="feature__card--role">Website Developer</p>
-          <p class="feature__card--role">MWT Contributor</p>
-        </div>
-
-        <div class="feature__card--links">
-          <p class="feature__card--row-title">Links</p>
-          <a class="feature__card--link" href="https://github.com/beauthebeau"><img class="feature__card--link-icon"
-                                                                                    src="img/mark-github.svg"
-                                                                                    alt="GitHub logo"></a>
-        </div>
-      </section>
-
-      <section>
-        <p class="feature__card--description">beauthebeau.js is the developer of this website and is a contributor to
-          Military War Tycoon.</p>
-      </section>
     </div>
   </section>
 </main>
+
+<footer>
+
+  <div class="logo">
+    <img src="/img/logo.webp" alt="Logo" class="logo__image">
+  </div>
+
+  <div class="footer__text footer__subsection">
+    <h2>leopards.wtf</h2>
+    <p>leopards.wtf is a website dedicated to the Roblox game <a class="footer__link"
+      href="https://www.roblox.com/games/31490825/APC-Military-War-Tycoon?AssetId=31490825">Military War Tycoon</a>.</p>
+  </div>
+
+  <div class="footer__links footer__subsection">
+    <h2>Links</h2>
+    <a href="index.html" class="footer__link">Home</a>
+    <a href="https://github.com/BeauTheBeau/leopards.wtf" class="footer__link">Contribute on GitHub</a>
+  </div>
+
+  <div class="footer__social footer__subsection">
+    <h2>Social</h2>
+    <a href="https://discord.gg/cGssSKJptt" class="footer__link">Join the Discord</a>
+    <a href="https://twitter.com/stay_spy" class="footer__link">Follow StaySpy on Twitter</a>
+  </div>
+
+</footer>
+
 </body>
 
 </html>
