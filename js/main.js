@@ -71,7 +71,7 @@ import('./typewriter.js').then(({default: typewriter}) => {
 
 /**
  * @name: Copy to Clipboard
- * @description: When the user clicks on a section's text, the text will be copied to the clipboard.
+ * @description: When the user clicks on a section's text, or element with data-copyable, the text will be copied to the clipboard.
  *              The text will be formatted as a Discord message, with a link to the page and a mention.
  *              The text will be formatted as a quote block, with a vertical bar (>) at the beginning of each line.
  *              The text will be formatted as a code block, with three backticks (```) at the beginning and end of the text.
@@ -80,13 +80,16 @@ import('./typewriter.js').then(({default: typewriter}) => {
  */
 
 const sectionText = document.getElementsByClassName("section__text");
-for (let i = 0; i < sectionText.length; i++) {
+const copyable = document.querySelectorAll("[data-copyable]");
+const allCopyable = [...sectionText, ...copyable];
+
+for (let i = 0; i < allCopyable.length; i++) {
 
   // set title to "Click to Copy"
-  sectionText[i].title = "Click to Copy";
+  allCopyable[i].title = "Click to Copy";
 
-  sectionText[i].addEventListener('click', () => {
-    const text = sectionText[i].innerText;
+  allCopyable[i].addEventListener('click', () => {
+    const text = allCopyable[i].innerText;
     const textToCopy = `Via https://leopards.wtf${window.location.pathname}, from <@729567972070391848>\n\n`
       + "> ```"  + `${text}`  + "```";
 

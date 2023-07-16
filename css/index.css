@@ -48,6 +48,15 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
+a {
+  color: rgb(var(--tertiary-color));
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+}
+a:hover {
+  color: rgb(var(--gradient-end));
+}
+
 .feature__card {
   background-color: rgb(var(--primary-color));
   border-radius: 1em;
@@ -142,6 +151,7 @@ main {
   max-width: 100%;
   max-height: 100%;
   padding: 1em;
+  z-index: 1500;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,7 +170,7 @@ main {
 .hero .content {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 1501;
   text-align: center;
 }
 .hero .hero__foreground, .hero::after {
@@ -178,7 +188,7 @@ main {
 }
 .hero::after {
   background-image: url("../img/reproduce_background.webp");
-  z-index: -2;
+  z-index: 1500;
 }
 .hero .hero__foreground {
   --hero-opacity: 1;
@@ -187,7 +197,7 @@ main {
   opacity: var(--hero-opacity);
   backdrop-filter: blur(var(--hero-blur));
   background-image: url("../img/reproduce_foreground.webp");
-  z-index: 2;
+  z-index: 1501;
   background-position: center;
 }
 
@@ -291,8 +301,163 @@ main section .section__text p {
   margin-top: 1em;
   transition: all 0.25s ease-in-out;
 }
+.subsection .section__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 0;
+  padding: 0 0 0 1em;
+  list-style: none;
+}
+.subsection .section__list li {
+  cursor: copy;
+  padding: 0.5em;
+  background-color: rgba(var(--tertiary-color), 0.05);
+  border-left: 4px solid rgba(var(--tertiary-color), 0.25);
+  border-radius: 0 1em 1em 0;
+  transition: all 0.1s ease-in-out;
+}
+.subsection .section__list li:hover {
+  background-color: rgba(var(--tertiary-color), 0.1);
+  scale: 1.01;
+  border-left: 4px solid rgba(var(--tertiary-color), 0.5);
+}
+.subsection .section__list li:active {
+  background-color: rgba(var(--tertiary-color), 0.05);
+  scale: 0.99;
+  border-left: 4px solid rgba(var(--tertiary-color), 0);
+  user-select: none;
+  border-radius: 1em;
+}
 .subsection:hover, .subsection:focus-within {
   background-color: rgba(var(--tertiary-color), 0.05);
+}
+
+.button--cta {
+  background: linear-gradient(to right, rgb(var(--gradient-start)) 25%, rgb(var(--gradient-end)) 75%);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  color: white;
+  font-weight: 700;
+  border: none;
+  transition: all 0.25s ease-in-out;
+}
+.button--cta:hover {
+  scale: 1.01;
+  box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+}
+.button--cta:active {
+  scale: 0.99;
+}
+.button--cta:focus {
+  outline: none;
+}
+
+dialog {
+  transition: all 0.25s ease-in-out;
+}
+dialog[open] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  background-color: rgba(var(--background-color), 0.75);
+  color: rgba(var(--tertiary-color), 1);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  border: none;
+  border-radius: 1em;
+  box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  transition: all 0.25s ease-in-out;
+}
+dialog:not([open]) {
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+dialog .dialog__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+dialog .dialog__header .dialog__header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+dialog .dialog__header .dialog__close {
+  background-color: rgba(var(--primary-color), 0.05);
+  border-radius: 0.5em;
+  padding: 0.5em;
+  width: 2em;
+  height: 2em;
+  color: rgba(var(--tertiary-color), 1);
+  font-weight: 700;
+  aspect-ratio: 1/1;
+  border: 1px solid rgba(var(--tertiary-color), 0.25);
+  transition: all 0.1s ease-in-out;
+}
+dialog .dialog__header .dialog__close:hover {
+  scale: 1.01;
+  box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+}
+dialog .dialog__header .dialog__close:active {
+  scale: 0.99;
+  background-color: rgba(var(--tertiary-color), 0.05);
+}
+dialog .dialog__header .dialog__close:focus {
+  outline: none;
+}
+dialog .dialog__body {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+dialog .dialog__body .dialog__text {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: rgba(var(--tertiary-color), 0.75);
+  font-style: italic;
+}
+dialog .dialog__footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+}
+dialog .dialog__footer .dialog__button {
+  background-color: rgba(var(--primary-color), 0.05);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  color: rgba(var(--tertiary-color), 1);
+  font-weight: 700;
+  border: 1px solid rgba(var(--tertiary-color), 0.25);
+  transition: all 0.1s ease-in-out;
+}
+dialog .dialog__footer .dialog__button:hover {
+  scale: 1.01;
+  box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+}
+dialog .dialog__footer .dialog__button:active {
+  scale: 0.99;
+  background-color: rgba(var(--tertiary-color), 0.05);
+}
+dialog .dialog__footer .dialog__button:focus {
+  outline: none;
 }
 
 .comparison__bar__chart {
@@ -355,6 +520,59 @@ main section .section__text p {
   transition: all 0.25s ease-in-out;
 }
 
+.persistent__buy__button {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  width: 25%;
+  z-index: 1000;
+  background: linear-gradient(to right, rgba(var(--gradient-start), 0.25), rgba(var(--gradient-end), 0.25));
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  color: rgba(var(--tertiary-color), 1);
+  backdrop-filter: blur(0.5em) brightness(1.25);
+  font-weight: 700;
+  border: 1px solid rgba(var(--tertiary-color), 0.25);
+  transition: all 0.1s ease-in-out;
+}
+.persistent__buy__button a {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.persistent__buy__button:hover {
+  scale: 1.01;
+  box-shadow: 0 0 1em rgba(var(--tertiary-color), 0.25);
+}
+.persistent__buy__button:active {
+  scale: 0.99;
+  background-color: rgba(var(--tertiary-color), 0.05);
+}
+.persistent__buy__button:focus {
+  outline: none;
+}
+
+.persistent__logo {
+  position: fixed;
+  top: 2em;
+  left: 2em;
+  background-color: rgba(var(--tertiary-color), 0.25);
+  backdrop-filter: blur(0.5em) brightness(0.25);
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  z-index: 1000;
+}
+.persistent__logo img {
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+}
+
 .bento__grid {
   display: grid;
   gap: 1em;
@@ -379,8 +597,9 @@ main section .section__text p {
 footer {
   background-color: rgba(var(--tertiary-color), 0.05);
   border-radius: 2em;
-  margin: 2em;
   padding: 2em;
+  max-width: 1200px;
+  margin: auto;
   display: grid;
   grid-template-areas: "logo empty empty" "text links social";
   gap: 1em;
