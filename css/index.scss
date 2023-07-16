@@ -473,6 +473,7 @@ dialog {
       font-weight: 700;
       margin: 0;
     }
+
     .dialog__close {
       background-color: rgba(var(--primary-color), 0.05);
       border-radius: 0.5em;
@@ -663,31 +664,6 @@ dialog {
 
 }
 
-.persistent__logo {
-  position: fixed;
-  top: 2em;
-  left: 2em;
-
-  background-color: rgba(var(--tertiary-color), 0.25);
-  backdrop-filter: blur(0.5em) brightness(0.25);
-  border-radius: 1em;
-  padding: 0.5em 1em;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1em;
-
-  z-index: 1000;
-
-  img {
-    width: 4em;
-    height: 4em;
-    object-fit: cover;
-  }
-
-}
 
 .bento__grid {
 
@@ -738,7 +714,6 @@ footer {
     font-weight: 500;
     margin: 0;
     color: rgba(var(--tertiary-color), 0.75);
-    font-style: italic;
   }
 
   .footer__subsection {
@@ -749,7 +724,6 @@ footer {
     background-color: rgba(var(--tertiary-color), 0.025);
     padding: 1em;
     border-radius: 1em;
-
   }
 
   .logo {
@@ -807,8 +781,79 @@ footer {
     width: 100%;
     min-height: 100%;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  footer {
+    grid-template-areas:
+      "logo"
+      "text"
+      "links"
+      "social";
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-radius: 2em 2em 0 0;
+  }
+
+  .persistent__buy__button {
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 0;
+    border: none;
+  }
+
+  main {
+    padding-bottom: 4em;
+  }
+
+  main {
+
+    padding: 0;
+
+    section {
+      margin: 0;
+      border-radius: 0;
+      padding: 2em 1em;
+      border-bottom: 1px solid rgba(var(--tertiary-color), 0.25);
+
+      .header {
+
+        .section__title {
+          font-size: 1.5rem;
+        }
+
+        .section__subtitle {
+          font-size: 1rem;
+        }
+
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover, &:active, &:focus {
+        box-shadow: none;
+      }
+
+    }
+
+    .bento__grid {
+      grid-template-areas:
+        "justtank"
+        "tankcar"
+        "rock"
+        "mbt"
+        "reproduce";
+    }
+  }
+
 
 }
+
 
 // Bento Grids
 #bg_images {

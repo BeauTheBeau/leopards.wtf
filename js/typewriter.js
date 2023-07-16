@@ -19,8 +19,8 @@ export default function typewriter(toType, targetElement, speed) {
     const currentText = toType[index];
 
     if (isDeleting) {
-      targetElement.style.backgroundColor = "black";
-      targetElement.style.color = "white";
+      targetElement.style.backgroundColor = "white";
+      targetElement.style.color = "black";
       setTimeout(() => {
         text = "";
         targetElement.style.backgroundColor = "transparent";
