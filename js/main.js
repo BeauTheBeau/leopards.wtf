@@ -1,16 +1,3 @@
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js'
-
-new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-  spaceBetween: 30,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  }
-});
-
 /**
  * @name: Floating Navbar
  * @type {Element}
@@ -44,9 +31,8 @@ window.addEventListener('scroll', () => {
   const blur = 10 - (Math.min(window.scrollY / heroHeight, 1) * 10).toFixed(2) * 2;
 
   const heroForeground = document.getElementById("hero__foreground");
-  heroForeground.style.opacity = opacity;
-  heroForeground.style.filter = `blur(${blur}px)`;
-  heroForeground.style.y = `${window.scrollY / 2}px`;
+  // heroForeground.style.opacity = opacity;
+  // heroForeground.style.filter = `blur(${blur}px)`;
 });
 
 import('./typewriter.js').then(({default: typewriter}) => {
